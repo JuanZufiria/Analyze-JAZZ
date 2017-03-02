@@ -1,26 +1,114 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
-  <head>
-    <title>NodeJS Starter Application</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="stylesheets/style.css">
-  </head>
+<head>
+  <meta charset="UTF-8">
 
-  <body>
-    <table>
-      <tr>
-        <td style= "width:30%;">
-          <img class = "newappIcon" src="images/newapp-icon.png">
-        </td>
-        <td>
-          <h1 id="message">Hello MAdrid!</h1>
-          <p class='description'></p> Thanks for creating a <span class = "blue">NodeJS Starter Application</span>.
-        </td>
-      </tr>
-    </table>
-  </body>
+  <!-- Define viewport (http://www.w3schools.com/css/css_rwd_viewport.asp) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+  <title>What's in the pic?</title>
+
+  <!-- Load bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+  <div class="container">
+
+      <div class="modal fade" id="failuremodal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: #d9534f">
+            <h5 class="modal-title" style="color:#fff">That's not good!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p><span id='errorMessage'></span></p>
+            <p>Want to try again?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="jumbotron">
+      <!-- jumbotron -->
+
+      <h1 class="display-4">What's in that picture?</h1>
+      <p class="lead">We're using the Watson Visual Recognition service to analyze the content of a picture</p>
+    </div>
+
+    <div class="row with-bottom-margin">
+      <div class="col">
+        <!-- image -->
+        <img id=img src="" height="150px" onerror="this.style.display='none'">
+      </div>
+      <div class="col-8" id=loader style="display:flex;justify-content:center;align-items:center;">
+        <!-- spinning loader -->
+        <div class="loader"></div>
+      </div>
+    </div>
+
+    <!-- total form -->
+    <div id=form>
+      <form>
+        <div class="form-group">
+          <label for="URLField">Link to the picture that you want me to look at</label>
+          <input type="text" class="form-control" id="URLField" name="URLField" placeholder="http://bla.com/pic-to-be-analyzed.jpg" required>
+        </div>
+        <!-- submit button -->
+        <button type="submit" data-toggle="modal" data-target="#successalert" class="btn btn-primary">Submit</button>
+
+      </form>
+    </div>
+
+    <!-- table to display results -->
+    <div id=resulttable>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  <!-- container -->
+
+  <!-- jQuery first, then tether, then Bootstrap JS. -->
+  <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+  <!-- Load my javascript file -->
+  <script src="src/client-js.js"></script>
+
+  <!-- google code prettify -->
+  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+</body>
 
 </html>
