@@ -6,3 +6,5 @@ applications:
   name: Analyze-JAZZ
   host: Analyze-JAZZ
   disk_quota: 1024M
+services:
+  - VisualR-JAZZ
